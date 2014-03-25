@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using EPiDefaultValuesMvcSample.Models.Blocks;
 using EPiServer.Core;
 using EPiServer.DataAnnotations;
 
@@ -13,7 +14,14 @@ namespace EPiDefaultValuesMvcSample.Models.Pages
         [DefaultValue("Default String")]
         public virtual string StringValue { get; set; }
 
-        [DefaultValue("<i>Default Html</i>")]
+        [DefaultValue(typeof(XhtmlString), "<i>Default Html</i>")]
         public virtual XhtmlString HtmlValue { get; set; }
+
+        [DefaultValue("<i>Another Default Html</i>")]
+        public virtual XhtmlString AnotherHtmlValue { get; set; }
+
+        public virtual DefaultsTestLocalBlock LocalBlock { get; set; }
+
+        public virtual ContentArea ContentArea { get; set; }
     }
 }

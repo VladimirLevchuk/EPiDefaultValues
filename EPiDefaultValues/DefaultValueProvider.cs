@@ -55,8 +55,28 @@ namespace EPiDefaultValues
                 var propertyInfo = type.GetProperty(propertyName);
                 var defaultValueAttribute = (DefaultValueAttribute) Attribute.GetCustomAttribute(propertyInfo, typeof(DefaultValueAttribute));
 
+                var defaultValue = nullValue;
+                     
+                if (defaultValueAttribute != null)
+                {
+                    if (defaultValueAttribute.Value != null)
+                    {
+                        var defaultValueType = defaultValueAttribute.Value.GetType();
+                        var propertyType = propertyInfo.PropertyType;
+
+                        if (propertyType.IsAssignableFrom(defaultValueType))
+                        {
+                            defaultValue = defaultValueAttribute.Value;
+                        }
+                        else if (defaultValueAttribute.Value is string)
+                        {
+                            defaultValue = TypeDescriptor.GetConverter(propertyType).ConvertFromInvariantString((string) defaultValueAttribute.Value);
+                        }
+                    }
+                }
+
                 // get it from the attribute
-                result = (defaultValueAttribute != null) ? defaultValueAttribute.Value : nullValue;
+                result = defaultValue;
 
                 // and cache 
                 CacheValue(cacheKey, result);

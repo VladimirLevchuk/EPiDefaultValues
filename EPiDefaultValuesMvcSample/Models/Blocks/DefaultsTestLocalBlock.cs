@@ -13,7 +13,7 @@ namespace EPiDefaultValuesMvcSample.Models.Blocks
         [DefaultValue("Default String")]
         public virtual string StringValue { get; set; }
 
-        [DefaultValue("<i>Default Html</i>")]
+        [DefaultValue(typeof(XhtmlString), "<i>Default Html</i>")]
         public virtual XhtmlString HtmlValue { get; set; }
     }
 }
