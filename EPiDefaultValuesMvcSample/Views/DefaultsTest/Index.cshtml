@@ -1,0 +1,42 @@
+﻿@model EPiDefaultValuesMvcSample.Models.Pages.DefaultsTestPage
+
+@section Title {
+   @Model.PageName
+}
+
+<div class="page-header">
+    <h1>@Html.PropertyFor(x => x.PageName)</h1>    
+</div>
+
+<div class="row">
+    <div class="col-md-4">Int Value</div>
+    <div class="col-md-8">@Html.PropertyFor(x => x.IntValue)</div>
+</div>
+
+<div class="row">
+    <div class="col-md-4">String Value</div>
+    <div class="col-md-8">@Html.PropertyFor(x => x.StringValue)</div>
+</div>
+
+<div class="row">
+    <div class="col-md-4">Html Value</div>
+    <div class="col-md-8" @Html.EditAttributes(x => x.HtmlValue)> @Model.HtmlValue </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4">Another Html Value</div>
+    <div class="col-md-8"> @Html.PropertyFor(x => x.AnotherHtmlValue) </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4">Local Block Value</div>
+    @*<div class="col-md-8">@Html.PropertyFor(x => x.LocalBlock)</div>*@
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        @Html.PropertyFor(x => x.ContentArea)
+    </div>
+</div>
+
+

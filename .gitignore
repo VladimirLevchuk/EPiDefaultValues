@@ -1,0 +1,11 @@
+obj/
+Debug/
+Release/
+!repositories.config
+packages/
+*.user
+EPiDefaultValues*.nupkg
+*.suo
+*.bak
+EPiDefaultValuesMvcSample/bin/
+*.log
