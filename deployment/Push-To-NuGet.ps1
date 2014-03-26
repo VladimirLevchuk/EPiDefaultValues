@@ -42,13 +42,16 @@ foreach($name in $variables.keys)
 $nuget = "$srcFolder\.nuget\NuGet.exe"
 $apikey = $variables["apikeySecure"]
 $nugetPackage = $variables["nugetPackageName"]
-$nugetPackagesMask = "$tempFolder\$nugetPackage\*.nupkg"
+$nugetPackagesMask = "$tempFolder\$nugetPackage*.nupkg"
+
+Write-Output "mask = $nugetPackagesMask"
 $packageFilename = $nugetPackagesMask
 $allPackages = Get-ChildItem $nugetPackagesMask
 
 foreach ($packageItem in $allPackages) 
 {
 	$packageFilename = $packageItem.ToString()
+    Write-Output    "Processing package: '$packageFilename'"
 	if (-not $packageFilename.Contains("symbols"))
 	{
 		$path = $packageFilename
