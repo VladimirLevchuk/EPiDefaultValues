@@ -1,7 +1,6 @@
 obj/
 Debug/
 Release/
-!repositories.config
 packages/
 *.user
 EPiDefaultValues*.nupkg
